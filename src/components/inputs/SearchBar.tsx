@@ -33,7 +33,7 @@ export default function SearchBar() {
       {/* أيقونة البحث */}
       <button
         onClick={toggleSearch}
-        className="p-2 text-gray-600 hover:text-black"
+        className="p-2 text-gray-600 hover:text-blac cursor-pointer"
       >
         <Search />
       </button>
@@ -47,8 +47,8 @@ export default function SearchBar() {
             animate={{ width: 200, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            placeholder="ابحث هنا..."
-            className="ml-2 px-3 py-1 text-sm border border-gray-300 rounded-full outline-none focus:ring focus:ring-blue-300"
+            placeholder="Sarch.."
+            className="ml-2 px-3 py-1 text-sm border border-gray-300 rounded-full outline-none focus:ring focus:ring-red-700"
           />
         )}
       </AnimatePresence>

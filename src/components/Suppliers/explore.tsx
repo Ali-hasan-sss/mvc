@@ -15,7 +15,7 @@ export default function Exploer() {
         sector, or product type.Browse supplier profiles and review their
         information and ratings.
       </p>
-      <div className="w-full py-10 flex items-center gap-10">
+      <div className="w-full pt-10 flex items-center gap-10">
         <div className="">
           <img src="/images/Ellipse.png" className="w-[270px]" alt="" />
         </div>
@@ -25,6 +25,9 @@ export default function Exploer() {
           ))}
         </div>
       </div>
+      <button className="linear_btn font-bold py-2 px-8 mt-10" type="button">
+        See More
+      </button>
     </div>
   );
 }

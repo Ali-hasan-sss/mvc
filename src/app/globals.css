@@ -25,7 +25,9 @@
   }
 }
 
-body {
+body,
+input,
+button {
   font-family: var(--font-inter);
 }
 .primary-color {
@@ -50,4 +52,7 @@ body {
 .explore_card {
   border-radius: 90px 20px 20px 20px;
   background: rgba(0, 0, 0, 0.06);
+}
+.swiper-slide {
+  transition: transform 0.3s ease;
 }
