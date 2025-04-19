@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import { Timmana } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const timmana = Timmana({
   subsets: ["latin"],
+  weight: "400",
+  variable: "--font-timmana",
 });
 
 export const metadata: Metadata = {
@@ -23,12 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${inter.variable} ${timmana.variable}`}>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-inter">{children}</body>
     </html>
   );
 }

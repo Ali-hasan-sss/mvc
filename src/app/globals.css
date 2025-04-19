@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
@@ -16,11 +19,35 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --font-inter: "Inter", sans-serif;
+    --font-Timmana: "Timmana", sans-serif;
+    --font-inria: "Inria Sans", sans-serif;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+}
+.primary-color {
+  color: #bf1e2e;
+}
+.title_logo {
+  letter-spacing: 15px;
+  line-height: 0px;
+}
+.linear_btn {
+  background: linear-gradient(to left, #f5a62399 30%, #bf1e2e 100%);
+  border-radius: 40px;
+  color: #ffffff;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.linear_btn:hover {
+  background: transparent;
+  border: 1px solid #bf1e2e;
+  color: #0a0a0a;
+}
+.explore_card {
+  border-radius: 90px 20px 20px 20px;
+  background: rgba(0, 0, 0, 0.06);
 }
