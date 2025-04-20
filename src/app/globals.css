@@ -56,3 +56,14 @@ button {
 .swiper-slide {
   transition: transform 0.3s ease;
 }
+.cta {
+  background: linear-gradient(to left, #006d77b2 30%, #bf1e2e 70%);
+  border-radius: 20px;
+}
+/**about section**/
+.mission {
+  background: url("/images/background.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
