@@ -67,3 +67,37 @@ button {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.linear_btn_about {
+  background: linear-gradient(to left, #2c2c2ccc 40%, #006d77cc 90%);
+  border-radius: 40px;
+  color: #ffffff;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.linear_btn_about:hover {
+  background: transparent;
+  color: #006d77cc;
+  border: 1px solid #006d77cc;
+  cursor: pointer;
+}
+/**about section**/
+.services_hero {
+  background: url("/images/servicesHero.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.services_hero::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #006d7780;
+  z-index: 1;
+}
+.ServiceCard {
+  border: 8px solid rgba(0, 0, 0, 0.03);
+}

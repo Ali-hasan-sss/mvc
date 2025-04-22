@@ -10,7 +10,7 @@ export default function NavBar() {
   const NavItems = [
     { label: "Home", path: "/" },
     { label: "About us", path: "/about" },
-    { label: "Service", path: "/service" },
+    { label: "Service", path: "/services" },
     { label: "Suppliers", path: "/suppliers" },
   ];
   const pathName = usePathname();
