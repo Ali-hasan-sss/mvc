@@ -16,10 +16,10 @@ export default function Exploer() {
         information and ratings.
       </p>
       <div className="w-full pt-10 flex items-center gap-10">
-        <div className="">
+        <div className="hidden md:block">
           <img src="/images/Ellipse.png" className="w-[270px]" alt="" />
         </div>
-        <div className="flex w-full items-center justify-center gap-4 overflow-x-auto px-6">
+        <div className="flex w-full items-center md:justify-center gap-4 overflow-x-auto px-6">
           {items.map((item, index) => (
             <ExploreCard item={item} key={index} />
           ))}

@@ -1,10 +1,10 @@
 export default function Hero() {
   return (
-    <section className="px-10 py-6 w-full mb-10 md:mb-0 md:min-h-[90vh] flex items-center justify-between gap-4">
-      <div className="w-1/2 hidden md:flex   items-center justify-center">
-        <img src="images/herologo.png" className="w-[400px] " />
-      </div>
-      <div className="w-full md:w-1/2 px-2 md:px-10 flex flex-col items-center justify-center">
+    <section className=" bg-hero h-[70vh]  w-full flex items-center justify-between gap-4">
+      <div
+        className="w-full md:w-1/2 h-full px-5 flex flex-col items-center justify-center"
+        style={{ background: "rgba(255, 255, 255, 0.7)" }}
+      >
         <h1 className="text-[50px] font-bold primary-color m-0 p-0">MVC</h1>
         <p className="text-sm mb-8 ml-2 title_logo">CARDS</p>
         <p className="text-lg font-medium italic">

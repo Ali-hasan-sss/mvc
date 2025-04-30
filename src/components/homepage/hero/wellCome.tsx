@@ -1,6 +1,6 @@
 export default function WellCome() {
   return (
-    <div className="w-full flex flex-col gap-1 items-center px-2  py-5 md:px-[60px] justify-center">
+    <div className="w-full flex flex-col gap-1 items-center px-2  py-10 md:px-[60px] justify-center">
       <h2
         className=" font-normal text-3xl tracking-wider "
         style={{ fontFamily: "var(--font-Timmana)" }}

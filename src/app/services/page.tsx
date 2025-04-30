@@ -64,28 +64,37 @@ export default function Services() {
       <NavBar />
       <ServicesHero />
       {/* after hero */}
-      <div className="flex items-center justify-between px-14">
+      <div className="w-full flex flex-col md:flex-row md:items-center md:justify-between justify-start px-6 md:px-14">
         <h2
-          className="font-bold mt-4 ml-2 text-2xl w-1/4"
+          className="font-bold md:mt-4 md:ml-2 text-2xl md:w-1/4 w-full"
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
           Take Business Services From Our Experienced Stuff
         </h2>
-        <p className="w-1/2 text-gray-600 pr-10 ">
+        <p className="w-full md:w-1/2 text-gray-600  md:pr-10 ">
           MVC offers a range of services designed to connect suppliers and
           merchants from around the world, facilitating trade and expanding
           global markets.
         </p>
       </div>
-      <div className=" px-14">
-        <div className=" pr-10 py-15 flex flex-wrap items-center justify-between gap-10">
+      <div className=" md:px-14">
+        <div className=" md:pr-10 py-6 md:mr-5 md:py-15 flex md:flex-wrap items-start md:items-center md:justify-center lg:justify-between flex-wrap gap-10">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
+            <div
+              key={index}
+              className={`w-full md:w-[300px] flex ${
+                index % 2 === 0
+                  ? "justify-start md:justify-center"
+                  : "md:justify-between justify-end md:justify-center"
+              }`}
+            >
+              <ServiceCard service={service} />
+            </div>
           ))}
         </div>
       </div>
       {/**CTA */}
-      <div className="flex items-center justify-between px-14 mb-3">
+      <div className="flex items-center justify-between  md:px-14 mb-3">
         <div
           className="py-10 px-5 flex w-full flex-col md:flex-row gap-4 items-center justify-between"
           style={{
@@ -96,7 +105,7 @@ export default function Services() {
           <div className="flex items-center gap-4">
             {" "}
             <img src="images/servicesCTA.png" className="w-10" alt="" />
-            <p className="font-bold text-xl text-white">
+            <p className="font-bold text-[18px] md:text-xl text-white">
               Are you a supplier or merchant?
             </p>
           </div>

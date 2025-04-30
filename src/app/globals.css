@@ -33,6 +33,12 @@ button {
 .primary-color {
   color: #bf1e2e;
 }
+.bg-hero {
+  background: url("/images/homehero.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .title_logo {
   letter-spacing: 15px;
   line-height: 0px;
@@ -97,7 +103,4 @@ button {
   height: 100%;
   background-color: #006d7780;
   z-index: 1;
-}
-.ServiceCard {
-  border: 8px solid rgba(0, 0, 0, 0.03);
 }

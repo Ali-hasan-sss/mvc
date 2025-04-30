@@ -1,6 +1,6 @@
 export default function SuccessNum() {
   return (
-    <div className="px-0 md:px-[150px]">
+    <div className="px-0 lg:block hidden md:px-[150px]">
       <div className=" bg-[rgba(0,0,0,0.85)] border-b-[3px] border-red-700 flex items-center w-full h-[75px] text-white">
         <div className="w-1/4 flex flex-col items-center justify-center relative">
           <p className="text-[12px] md:text-xl font-bold">

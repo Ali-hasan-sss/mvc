@@ -21,7 +21,7 @@ export default function ExploreCard({ item }: ExploreCardProps) {
         >
           {item.title}
         </h3>
-        <p className="text-xs text-gray-600 line-clamp-3 text-justify">
+        <p className="text-xs text-gray-600 line-clamp-3 ">
           {item.description}
         </p>
       </div>
