@@ -1,6 +1,6 @@
 export default function HowItWork() {
   return (
-    <div className="relative flex flex-col items-center px-2 md:px-[150px] py-[30px] ">
+    <div className="relative flex flex-col items-center px-2 md:px-[150px]  md:py-[30px] ">
       <img
         src="/images/Ellipse1.png"
         className="absolute w-[200px] top-20 right-0 hidden md:block"
@@ -25,7 +25,7 @@ export default function HowItWork() {
           administration.
         </p>
       </div>
-      <div className="flex flex-col items-center gap-4 mt-6">
+      <div className="flex flex-col items-center gap-4  md:mt-6">
         <h2
           className="font-bold text-3xl mt-20"
           style={{ fontFamily: "var(--font-Timmana)" }}

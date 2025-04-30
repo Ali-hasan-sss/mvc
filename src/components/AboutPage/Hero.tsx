@@ -1,6 +1,6 @@
 export default function AboutHero() {
   return (
-    <div className="flex flex-col md:flex-row  items-center p-0 justify-center gap-1 mt-5 md:mt-10 ">
+    <div className="flex flex-col md:flex-row  items-center p-0 justify-center md:gap-10 gap-1 mt-5 md:mt-10 ">
       <div className="w-full px-2 md:w-[350px]  h-[180px] md:hidden">
         <p className="border-l-[3px] border-red-700 px-2 mt-4 font-bold">
           About Us

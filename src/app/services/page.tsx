@@ -78,7 +78,7 @@ export default function Services() {
         </p>
       </div>
       <div className=" md:px-14">
-        <div className=" md:pr-10 py-6 md:mr-5 md:py-15 flex md:flex-wrap items-start md:items-center md:justify-center lg:justify-between flex-wrap gap-10">
+        <div className=" md:pr-10 py-6 md:mr-5 md:py-15 flex md:flex-wrap items-start md:items-center md:justify-center lg:justify-between flex-wrap md:gap-10">
           {services.map((service, index) => (
             <div
               key={index}

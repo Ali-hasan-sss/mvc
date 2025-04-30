@@ -1,7 +1,7 @@
 export default function ServicesHero() {
   return (
     <div>
-      <div className="w-[100vw] flex py-10 md:relative services_hero h-[30vh] md:h-[40vh] px-10 ">
+      <div className=" flex py-10 md:relative services_hero h-[30vh] md:h-[40vh] px-10 ">
         {/* viwe in medium screen */}
         <div className="flex w-full z-20 flex-col justify-end md:justify-center">
           <p className="border-l-[2px] text-white pl-2 border-red-700 text-lg font-bold">

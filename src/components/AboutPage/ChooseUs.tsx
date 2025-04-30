@@ -23,7 +23,7 @@ export default function ChooseUs() {
       className=" justify-center py-10 md:py-[60px] items-center flex flex-col"
       style={{ background: "#006D77" }}
     >
-      <div className="relative w-[400px] flex items-center justify-center h-[100px]">
+      <div className="relative w-[350px] flex items-center justify-center h-[100px]">
         <h2
           className="font-bold text-3xl text-white"
           style={{ fontFamily: "var(--font-Timmana)" }}

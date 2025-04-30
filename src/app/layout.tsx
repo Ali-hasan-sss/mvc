@@ -31,6 +31,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="images/logo.png" type="image/png" />
       </head>
       <body className="font-inter">{children}</body>
     </html>
