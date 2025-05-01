@@ -104,3 +104,12 @@ button {
   background-color: #006d7780;
   z-index: 1;
 }
+/* supplier page**/
+.search_btn {
+  background: linear-gradient(to left, #f5a623cc 30%, #006d77cc 80%);
+  border: 1px solid transparent;
+}
+.search_btn:hover {
+  background: transparent;
+  border: 1px solid #006d77cc;
+}
