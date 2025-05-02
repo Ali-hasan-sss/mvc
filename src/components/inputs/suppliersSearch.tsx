@@ -41,7 +41,7 @@ export default function SearchSupliers() {
       <div className="form-group flex items-center mt-5 justify-center w-full">
         <button
           type="submit"
-          className="py-1 px-3 search_btn w-full rounded-full cursor-pointer text-white font-bold"
+          className="py-2 px-3 search_btn w-full rounded-full cursor-pointer text-gray-100 hover:text-gray-900 font-bold"
         >
           Search Now
         </button>
