@@ -5,7 +5,7 @@ export default function FindSuppliers() {
   return (
     <div className="w-full px-2 lg:px-20 py-5 md:py-8 flex flex-col lg:flex-row gap-10 lg:gap-0 items-center justify-center  lg:justify-between ">
       {/* images container */}
-      <div className="w-[350px]  relative md:w-[450px] h-[350px] ">
+      <div className="w-[350px] hidden md:block  relative md:w-[450px] h-[350px] ">
         <div className="w-[250px] md:w-[320px]  h-[350px] relative ">
           <div className="w-[250px] md:w-[320px] h-[350px] border rounded-[50%]">
             <img
@@ -51,7 +51,7 @@ export default function FindSuppliers() {
         </div>
         <img
           src="images/Rectangle1Find.png"
-          className="absolute w-25 md:w-30 left-70 md:left-93 top-35 md:top-23 "
+          className="absolute hidden md:block md:w-30 left-70 md:left-93 top-35 md:top-23 "
           alt=""
         />
       </div>
