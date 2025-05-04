@@ -71,8 +71,8 @@ export default function SupplierDetails() {
             <div className="image">
               <div className="flex items-center overflow-hidden justify-center h-[150px] md:h-[230px] w-[150px] md:w-[230px] rounded-full bg-gray-100">
                 <img
-                  src="/images/slider.png"
-                  className="z-10 w-[100px] md:w-[180px]"
+                  src={`/${supplier.image}`}
+                  className="z-10 w-[150px] md:w-[180px]"
                   alt=""
                 />
               </div>

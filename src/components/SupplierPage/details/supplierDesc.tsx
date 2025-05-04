@@ -9,7 +9,7 @@ export default function SupplierDiscription({
   supplier,
 }: SupplierDiscriptionProps) {
   return (
-    <div className="flex flex-col mt-4 text-gray-900 md:px-10 w-full">
+    <div className="flex flex-col mt-4 text-gray-900 px-2 md:px-10 w-full">
       <p className="text-xs md:text-sm">
         {supplier.description && supplier.description}
       </p>
