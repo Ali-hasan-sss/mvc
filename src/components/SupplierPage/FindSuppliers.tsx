@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
-import SearchSupliers from "../inputs/suppliersSearch";
+import SearchSupliers from "../forms/suppliersSearch";
+import { suppliers } from "./data";
 
 export default function FindSuppliers() {
   return (
@@ -56,7 +57,7 @@ export default function FindSuppliers() {
         />
       </div>
       {/*------ end images container -------*/}
-      <SearchSupliers />
+      <SearchSupliers suppliers={suppliers} />
     </div>
   );
 }

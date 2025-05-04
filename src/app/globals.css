@@ -113,3 +113,8 @@ button {
   background: transparent;
   border: 1px solid #006d77cc;
 }
+.bg_company {
+  background: linear-gradient(rgba(16, 0, 0, 0.4), rgba(16, 0, 0, 0.4)),
+    url("/images/bg_company.png") center / cover no-repeat;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0);
+}

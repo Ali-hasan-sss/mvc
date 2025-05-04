@@ -124,7 +124,7 @@ export default function SupplierCarousel() {
             {suppliers[current].name}
           </h3>
           <p className="text-gray-500 text-sm mb-3">
-            {suppliers[current].location}
+            {suppliers[current].contact.country}
           </p>
           <p className="text-gray-700 px-5 text-sm mt-10 h-[100px] overflow-y-auto">
             {suppliers[current].description}
