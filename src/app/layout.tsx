@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Timmana } from "next/font/google";
+import Footer from "@/components/NavBar/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,7 +34,10 @@ export default function RootLayout({
         />
         <link rel="icon" href="images/logo.png" type="image/png" />
       </head>
-      <body className="font-inter">{children}</body>
+      <body className="font-inter">
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
