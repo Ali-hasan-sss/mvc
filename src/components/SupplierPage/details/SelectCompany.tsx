@@ -1,7 +1,8 @@
-import { companies } from "../data";
-import CompanyCard from "./companyCard";
-
-export default function SelectCompany() {
+import CompanyCard from "@/components/cards/companyCard";
+interface SelectCompanyProop {
+  companies: [{ id: number; companyName: string }];
+}
+export default function SelectCompany({ companies }: SelectCompanyProop) {
   return (
     <div className="flex flex-col w-full items-center gap-10 py-5 md:py-10 mt-10">
       <h2 className="text-xl md:text-3xl font-bold">Select Company</h2>
