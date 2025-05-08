@@ -6,10 +6,12 @@ import CustomCarousel from "@/components/slider/ImageCarousel";
 import ReviewCard from "@/components/cards/reviewsCard";
 import { useEffect, useState } from "react";
 import ReviewForm from "@/components/forms/reviewForm";
+import { useTranslation } from "react-i18next";
 interface reviewsProps {
   supplier: supplier;
 }
 export default function Reviews({ supplier }: reviewsProps) {
+  const { t } = useTranslation();
   const [viewNavegation, setViewNavegation] = useState(false);
   useEffect(() => {
     const updateView = () => {
@@ -63,12 +65,14 @@ export default function Reviews({ supplier }: reviewsProps) {
             {formatNumber(supplier.reviews.total_reviews)}
           </p>
           <p className="text-xs md:text-lg text-gray-400">
-            Total reviews on this year
+            {t("suppliers.Total_reviews_on_this_year")}
           </p>
         </div>
         <div className="w-[2px] h-25 bg-gray-300"></div>
         <div className="flex w-1/3 md:w-1/4 flex-col gap-2">
-          <p className="text-sm md:text-lg font-bold">Average Rating</p>
+          <p className="text-sm md:text-lg font-bold">
+            {t("suppliers.Average_Rating")}
+          </p>
           <div className="flex items-center w-full gap-3">
             <p className=" text-lg md:text-2xl font-bold">
               {supplier.reviews.average_reviews}
@@ -88,7 +92,7 @@ export default function Reviews({ supplier }: reviewsProps) {
             </div>
           </div>
           <p className="text-xs md:text-lg text-gray-400">
-            Average rating on this year
+            {t("suppliers.Average_rating_on_this_year")}
           </p>
         </div>
         <div className="w-[2px] hidden md:block h-25 bg-gray-300"></div>
@@ -104,7 +108,9 @@ export default function Reviews({ supplier }: reviewsProps) {
               ))}
             </div>
           ) : (
-            <p className="text-sm text-gray-500">No ratings available.</p>
+            <p className="text-sm text-gray-500">
+              {t("suppliers.No_ratings_available")}.
+            </p>
           )}
         </div>
         {/* cust comments  */}
@@ -121,13 +127,16 @@ export default function Reviews({ supplier }: reviewsProps) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-gray-500">No ratings available.</p>
+          <p className="text-sm text-gray-500">
+            {" "}
+            {t("suppliers.No_ratings_available")}.
+          </p>
         )}
       </div>
       {/* reviews */}
       <div className="flex flex-col items-center w-full px-2 md:px-10 lg:px-20 py-10 bg-[#006D7733] gap-5">
         <h1 className="text-xl md:text-3xl font-bold">
-          What Our Customers Says
+          {t("suppliers.What_Our_Customers_Says")}
         </h1>
 
         <CustomCarousel

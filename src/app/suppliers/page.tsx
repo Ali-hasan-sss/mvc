@@ -1,3 +1,5 @@
+"use client";
+import Footer from "@/components/NavBar/Footer";
 import NavBar from "@/components/NavBar/navBar";
 import FindSuppliers from "@/components/SupplierPage/FindSuppliers";
 import SupplierHero from "@/components/SupplierPage/hero";
@@ -12,6 +14,7 @@ export default function SupplierPage() {
       <FindSuppliers />
       <SupplierCarousel />
       <HowStarted />
+      <Footer />
     </section>
   );
 }

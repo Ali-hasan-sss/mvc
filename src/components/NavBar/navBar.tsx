@@ -4,16 +4,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import SearchBar from "../inputs/SearchBar";
+import LangMenu from "../buttons/LanguageMenu";
+import { useTranslation } from "react-i18next";
 
 export default function NavBar() {
+  const { t } = useTranslation();
+
   const [isOpen, setIsOpen] = useState(false);
   const NavItems = [
     { label: "Home", path: "/" },
-    { label: "About us", path: "/about" },
-    { label: "Service", path: "/services" },
+    { label: "About_us", path: "/about" },
+    { label: "Services", path: "/services" },
     { label: "Suppliers", path: "/suppliers" },
   ];
   const pathName = usePathname();
+
   return (
     <nav className="relative bg-white">
       <div className=" px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
@@ -80,9 +85,10 @@ export default function NavBar() {
                 }  `}
                 href={item.path}
               >
-                {item.label}
+                {t(`navbar.${item.label}`)}
               </Link>
             ))}
+            <LangMenu />
           </div>
         </div>
         <div className="hidden md:block">

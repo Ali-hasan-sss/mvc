@@ -1,10 +1,15 @@
 import { Star } from "lucide-react";
 import SearchSupliers from "../forms/suppliersSearch";
 import { suppliers } from "./data";
+import { useTranslation } from "react-i18next";
 
 export default function FindSuppliers() {
+  const { t } = useTranslation();
   return (
-    <div className="w-full px-2 lg:px-20 py-5 md:py-8 flex flex-col lg:flex-row gap-10 lg:gap-0 items-center justify-center  lg:justify-between ">
+    <div
+      style={{ direction: "ltr" }}
+      className="w-full px-2 lg:px-20 py-5 md:py-8 flex flex-col lg:flex-row gap-10 lg:gap-0 items-center justify-center  lg:justify-between "
+    >
       {/* images container */}
       <div className="w-[350px] hidden md:block  relative md:w-[450px] h-[350px] ">
         <div className="w-[250px] md:w-[320px]  h-[350px] relative ">
@@ -40,7 +45,7 @@ export default function FindSuppliers() {
         {/* badg */}
         <div className="absolute py-2 md:py-3 px-1 md:px-4 z-[-1] w-[150px] md:w-[175px] h-[70px] md:h-[85px] rounded-xl bg-[rgba(157,157,157,0.15)] bottom-18 md:bottom-23 right-0 md:right-3 flex flex-col justify-center items-center gap-1">
           <p className="text-xs text-gray-700  font-bold">
-            Evaluate your supplier
+            {t("suppliers.Evaluate_your_supplier")}
           </p>
           <div className="flex items-center gap-1">
             <Star className="fill-yellow-500 text-yellow-500 text-lg" />

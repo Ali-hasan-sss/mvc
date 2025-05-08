@@ -1,62 +1,42 @@
+"use client";
+import Footer from "@/components/NavBar/Footer";
 import NavBar from "@/components/NavBar/navBar";
 import ServicesHero from "@/components/servicesPage/Hero";
 import ServiceCard from "@/components/servicesPage/ServiceCard";
+import { useTranslation } from "react-i18next";
 
 export default function Services() {
+  const { t } = useTranslation();
   const services = [
     {
       image: "images/service1.png",
-      title: "Global Supplier Directory",
-      futuers: [
-        "A massive database containing suppliers from various industries and countries.",
-        "Search by country, industrial sector, and product type to quickly locate the right supplier.",
-        "Detailed profiles for each supplier, including contact information, products, and certifications",
-      ],
+      title: "services1",
+      futuers: ["services1f1", "services1f2", "services1f3"],
     },
     {
       image: "images/service2.png",
-      title: "Deal and Offer Management",
-      futuers: [
-        "A platform to assist with purchase orders and offers.",
-        "Ability to communicate with other suppliers via the messaging system.",
-        "Easily track orders and manage all business transactions.",
-      ],
+      title: "services2",
+      futuers: ["services2f1", "services2f2", "services2f3"],
     },
     {
       image: "images/service3.png",
-      title: "Import and Export Support",
-      futuers: [
-        "Helping merchants find reliable international suppliers.",
-        "Support for shipping and customs clearance operations through specialized partners.",
-        "Providing logistics solutions to facilitate transportation and delivery operations.",
-      ],
+      title: "services3",
+      futuers: ["services3f1", "services3f2", "services3f3"],
     },
     {
       image: "images/service4.png",
-      title: "Smart Search and Filtering Tools",
-      futuers: [
-        "An advanced search system allows users to easily find suppliers.",
-        "Filter results by ratings, prices, countries, and product availability.",
-        "The ability to compare suppliers to get the best deals.",
-      ],
+      title: "services4",
+      futuers: ["services4f1", "services4f2", "services4f3"],
     },
     {
       image: "images/service5.png",
-      title: " Customer Support and Business Consulting",
-      futuers: [
-        "Allows merchants to evaluate suppliers based on their actual experience.",
-        " Transparent reviews help make better business decisions.",
-        "Build a trusted reputation for verified suppliers.",
-      ],
+      title: "services5",
+      futuers: ["services5f1", "services5f2", "services5f3"],
     },
     {
       image: "images/service6.png",
-      title: " Customer Support and Business Consulting",
-      futuers: [
-        "A support team is available to answer merchant and supplier inquiries.",
-        "Provide consultations on best business practices, negotiation, and deal management.",
-        "Assist in resolving business disputes and building trust between parties.",
-      ],
+      title: "services6",
+      futuers: ["services6f1", "services6f2", "services6f3"],
     },
   ];
   return (
@@ -69,12 +49,10 @@ export default function Services() {
           className="font-bold md:mt-4 md:ml-2 text-2xl md:w-1/4 w-full"
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
-          Take Business Services From Our Experienced Stuff
+          {t("services.section_title")}
         </h2>
         <p className="w-full md:w-1/2 text-gray-600  md:pr-10 ">
-          MVC offers a range of services designed to connect suppliers and
-          merchants from around the world, facilitating trade and expanding
-          global markets.
+          {t("services.section_des")}
         </p>
       </div>
       <div className=" md:px-14">
@@ -106,7 +84,7 @@ export default function Services() {
             {" "}
             <img src="images/servicesCTA.png" className="w-10" alt="" />
             <p className="font-bold text-[18px] md:text-xl text-white">
-              Are you a supplier or merchant?
+              {t("services.section_q")}
             </p>
           </div>
 
@@ -114,10 +92,11 @@ export default function Services() {
             type="button"
             className="bg-white hover:bg-gray-300 py-2 px-4 rounded-xl md:w-1/4 cursor-pointer"
           >
-            Contact us{" "}
+            {t("Contact_us")}
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

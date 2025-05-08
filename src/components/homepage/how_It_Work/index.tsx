@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 export default function HowItWork() {
+  const { t } = useTranslation();
   return (
     <div className="relative flex flex-col items-center px-2 md:px-[150px]  md:py-[30px] ">
       <img
@@ -11,18 +14,18 @@ export default function HowItWork() {
           className="font-bold text-3xl"
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
-          How does the site work?
+          {t("home.How_it_work")}
         </h2>
         <p className="text-lg leading-relaxed z-20">
-          Join our global network easily
-          <br /> Browse available suppliers or deals <br />
-          use smart filters to find the best business opportunities.
-          <br /> Connect with the right supplier
-          <br /> Interact directly via chat or the request for proposal form.
+          {t("home.Join")}
+          <br /> {t("home.Browse")} <br />
+          {t("home.use_smart")}
+          <br /> {t("home.connect")}
+          <br /> {t("home.Interact")}
           <br />
-          Close your deal securely
-          <br /> Complete business transactions through the website
-          administration.
+          {"home.close"}
+          <br />
+          {t("home.Complete")}
         </p>
       </div>
       <div className="flex flex-col items-center gap-4  md:mt-6">
@@ -30,18 +33,16 @@ export default function HowItWork() {
           className="font-bold text-3xl mt-20"
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
-          Website Features:
+          {t("home.Website_Features")}:
         </h2>
         <p className="text-lg leading-relaxed lg:px-30">
-          A global database of thousands of suppliers and merchants.
-          <br /> An advanced filtering system to quickly find the right
-          supplier.
+          {t("home.global_database")}
           <br />
-          Professional support to ensure a smooth and secure business
-          experience.
+          {t("home.advanced_filtering")}
           <br />
-          Integration with payment methods and logistics services to facilitate
-          import and export operations.
+          {t("home.Professional_support")}
+          <br />
+          {t("home.Integration")}
         </p>
       </div>
     </div>

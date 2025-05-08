@@ -1,4 +1,5 @@
 import { ShoppingCart } from "lucide-react";
+import { useTranslation } from "react-i18next";
 interface product {
   id: number;
   product: string;
@@ -10,6 +11,7 @@ interface ProductsTypeCardProps {
 }
 
 export default function ProductsTypeCard({ product }: ProductsTypeCardProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col items-center justify-between h-[240px] w-[200px] rounded-xl border-[3px] px-5 py-3 border-[#00000014]">
       <div className="flex items-center justify-center w-[100px] h-[100px]">
@@ -23,7 +25,8 @@ export default function ProductsTypeCard({ product }: ProductsTypeCardProps) {
       <h3 className="text-lg text-red-700 font-bold">{product.price} $</h3>
       <button className="cursor-pointer flex items-center justify-between hover:bg-gray-100 py-1 px-3 w-full border rounded-full">
         <ShoppingCart className="text-xs text-[#006D77] fill-[#006D77]" />
-        <span className="text-gray-600 text-xs font-bold"></span> Add to cart
+        <span className="text-gray-600 text-xs font-bold"></span>{" "}
+        {t("Add_to_cart")}
       </button>
     </div>
   );

@@ -2,12 +2,14 @@
 import { useState, useEffect } from "react";
 import { supplier } from "../../../types";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 interface SearchSuppliersProps {
   suppliers: supplier[];
 }
 
 export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     country: "",
     sector: "",
@@ -65,22 +67,21 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
             className="text-2xl font-bold"
             style={{ fontFamily: "var(--font-Timmana)" }}
           >
-            Find Suppliers
+            {t("suppliers.Find_Suppliers")}
           </h2>
           <p className="text-sm text-gray-700">
-            Use the advanced search system to find the right supplier quickly
-            and efficiently.
+            {t("suppliers.Find_Suppliers_des")}
           </p>
         </div>
 
         {["country", "sector", "productType"].map((field, i) => (
           <div key={i} className="form-group flex flex-col">
             <label className="text-sm text-[rgba(0,109,119,1)] capitalize">
-              {field.replace(/([A-Z])/g, " $1")}
+              {t(`suppliers.${field}`)}
             </label>
             <input
               type="text"
-              placeholder={`Enter ${field}`}
+              placeholder={t("suppliers.Type")}
               value={formData[field as keyof typeof formData]}
               onChange={(e) =>
                 setFormData({ ...formData, [field]: e.target.value })
@@ -95,7 +96,7 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
             type="submit"
             className="py-2 px-3 search_btn w-full rounded-full cursor-pointer text-gray-100 hover:text-gray-900 font-bold bg-[rgba(0,109,119,1)]"
           >
-            Search Now
+            {t("Search_Now")}
           </button>
         </div>
       </form>
@@ -105,7 +106,7 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
         <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl shadow-lg p-6 max-w-md w-full">
             <h3 className="text-xl font-bold mb-4 text-[rgba(0,109,119,1)]">
-              search result
+              {"suppliers.search_result"}
             </h3>
 
             {results.length > 0 ? (
@@ -133,14 +134,14 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
                 ))}
               </ul>
             ) : (
-              <p className="text-gray-500">no seach results</p>
+              <p className="text-gray-500">{t("suppliers.no_seach_results")}</p>
             )}
 
             <button
               onClick={() => setShowModal(false)}
               className="mt-4 bg-[rgba(0,109,119,1)] text-white px-4 py-2 rounded-full w-full"
             >
-              close
+              {t("close")}
             </button>
           </div>
         </div>

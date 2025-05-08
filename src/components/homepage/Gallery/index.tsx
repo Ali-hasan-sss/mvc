@@ -1,6 +1,8 @@
 import ImageCarousel from "@/components/slider/ImageCarousel";
+import { useTranslation } from "react-i18next";
 
 export default function Gallery() {
+  const { t } = useTranslation();
   const srcs = [
     "/images/slider.png",
     "/images/slider.png",
@@ -27,11 +29,14 @@ export default function Gallery() {
         className="flex flex-col text-white ml:-1 md:ml-20 "
         style={{ fontFamily: "var(--font-Timmana)" }}
       >
-        <h5 className="text-2xl">How Can You</h5>
-        <h1 className="text-4xl">Grow Your Business</h1>
-        <h5 className="text-2xl">With the Help of Your</h5>
+        <h5 className="text-2xl">{t("home.How_Can_You")}</h5>
+        <h1 className="text-4xl">{t("home.Grow_Your_Business")}</h1>
+        <h5 className="text-2xl">{t("home.With_the_Help_of_Your")}</h5>
         <h5 className="text-2xl">
-          <span className="primary-color"> MVC World Wide </span> Account?
+          <span className="primary-color px-1">
+            {" "}
+            {t("home.MVC_World_Wide")}{" "}
+          </span>{" "}
         </h5>
       </div>
       <ImageCarousel

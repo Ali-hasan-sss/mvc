@@ -2,8 +2,10 @@
 import { Bookmark, ChevronLeft, ChevronRight, Heart, Send } from "lucide-react";
 import { useEffect, useState } from "react";
 import { suppliers } from "./data";
+import { useTranslation } from "react-i18next";
 
 export default function SupplierCarousel() {
+  const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(7);
 
@@ -79,7 +81,7 @@ export default function SupplierCarousel() {
           style={{ fontFamily: "var(--font-Timmana)" }}
           className=" text-xl mt-3 md:text-3xl absolute left-1/2 transform -translate-x-1/2 font-bold mb-10"
         >
-          Available Suppliers
+          {t("suppliers.Available_Suppliers")}
         </h2>
         {displayedSuppliers.map((supplier, idx, visibleSuppliers) => {
           const relativeIndex = idx - Math.floor(visibleSuppliers.length / 2);

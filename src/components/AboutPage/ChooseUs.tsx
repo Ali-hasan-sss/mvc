@@ -1,26 +1,28 @@
+import { useTranslation } from "react-i18next";
 import InfoCard from "./infocsrd";
 
 export default function ChooseUs() {
+  const { t } = useTranslation();
   const cards = [
     {
       image: "/images/earth.png",
-      title: "Global Expansion",
-      desc: "Access to suppliers and merchants from around the world",
+      title: "Global_Expansion",
+      desc: "Global_Expansion_des",
     },
     {
       image: "/images/search.png",
-      title: "Easy search",
-      desc: "Advanced search tools enable you to find the perfect supplier in minutes.",
+      title: "Easy_search",
+      desc: "Easy_search_des",
     },
     {
       image: "/images/mdi_deal.png",
-      title: "Close transactions",
-      desc: "A secure and reliable platform supports professional buying and selling.",
+      title: "Close_transactions",
+      desc: "Close_transactions_des",
     },
   ];
   return (
     <div
-      className=" justify-center py-10 md:py-[60px] items-center flex flex-col"
+      className=" justify-center py-10 items-center flex flex-col"
       style={{ background: "#006D77" }}
     >
       <div className="relative w-[350px] flex items-center justify-center h-[100px]">
@@ -28,7 +30,7 @@ export default function ChooseUs() {
           className="font-bold text-3xl text-white"
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
-          Why Choose Us?
+          {t("about.Why_Choose_Us")}
         </h2>
         <img
           src="images/Star.png"
@@ -52,8 +54,8 @@ export default function ChooseUs() {
             key={index}
             isChip
             image={card.image}
-            title={card.title}
-            desc={card.desc}
+            title={t(`about.${card.title}`)}
+            desc={t(`about.${card.desc}`)}
           />
         ))}
       </div>

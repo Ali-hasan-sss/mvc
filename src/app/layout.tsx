@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Timmana } from "next/font/google";
-import Footer from "@/components/NavBar/Footer";
-
+import LanguageProvider from "@/components/providers/LanguageProvider";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -26,17 +25,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${timmana.variable}`}>
+    <html className={`${inter.variable} ${timmana.variable}`}>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo&display=swap"
+          rel="stylesheet"
+        />
+
         <link rel="icon" href="images/logo.png" type="image/png" />
       </head>
       <body className="font-inter">
-        {children}
-        <Footer />
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

@@ -35,3 +35,4 @@ export interface supplier {
     price: number;
   }[];
 }
+export type Language = "en" | "ar";

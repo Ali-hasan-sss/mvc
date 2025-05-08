@@ -1,6 +1,8 @@
 import { Eye, Users } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Mession() {
+  const { t } = useTranslation();
   return (
     <div className="w-full mt-10 flex gap-4 lg:gap-0 py-4 lg:py-0 flex-col lg:flex-row items-center lg:bg-[rgba(0,0,0,0.85)] lg:relative">
       <div className="w-full lg:w-1/3 relative hidden  lg:block lg:h-[350px]">
@@ -12,14 +14,14 @@ export default function Mession() {
       </div>
       {/* for mobile & tablet */}
       <div className="lg:hidden w-full px-2">
-        <p className="border-l-[3px] md:text-xl border-red-700 px-2 mt-4 font-bold text-gray-500">
-          OUR MISSION & VISION
+        <p className="ltr:border-l-[3px] rtl:border-r-[3px] md:text-xl border-red-700 px-2 mt-4 font-bold text-gray-500">
+          {t("about.OUR_MISSION_VISION")}
         </p>
         <p
           className="font-bold text-xl md:text-3xl mt-3 leading-relaxed lg:text-white "
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
-          Discover the core principles that cuids us
+          {t("about.Discover")}
         </p>
       </div>
       <img
@@ -33,11 +35,9 @@ export default function Mession() {
         <div className="absolute bottom-5 left-10 w-[250px] border-b-[3px] border-red-700 flex items-end h-[185px] ">
           <div className="w-[250px] h-[160px] absolute buttom-0 left-0 bg-white ">
             <div className="mt-8 px-3 ">
-              <h5 className="font-[600]">Our Vission</h5>
+              <h5 className="font-[600]">{t("about.Our_Vission")}</h5>
               <p className="text-xs mt-1 text-gray-500">
-                At MVC, Our goal is to enable merchants and suppliers from
-                different countries to easily communicate, expand their
-                businesses globally through an integrated digital platform.
+                {t("about.Our_Vission_des")}
               </p>
             </div>
           </div>
@@ -48,12 +48,9 @@ export default function Mession() {
         <div className="absolute bottom-5 left-80 w-[250px] border-b-[3px] border-red-700 flex items-end h-[185px] ">
           <div className="w-[250px] h-[160px] absolute buttom-0 left-0 bg-white ">
             <div className="mt-8 px-3  ">
-              <h5 className="font-[600]">Our Mission</h5>
+              <h5 className="font-[600]">{t("about.Our_Mission")}</h5>
               <p className="text-xs mt-1 text-gray-500">
-                We seek to create a dynamic trading environment that enables
-                suppliers to showcase their products and services, and merchants
-                to explore global markets through a seamless and secure
-                interface.
+                {t("about.Our_Mission_des")}
               </p>
             </div>
           </div>
@@ -69,12 +66,10 @@ export default function Mession() {
             <div className="w-full h-[160px] absolute buttom-0 left-0  ">
               <div className="mt-8 w-full px-3 ">
                 <h5 className="font-[600]  absolute top-0 left-20 ">
-                  Our Vission
+                  {t("about.Our_Vission")}
                 </h5>
                 <p className="text-xs absolute top-15 text-gray-500">
-                  At MVC, Our goal is to enable merchants and suppliers from
-                  different countries to easily communicate, expand their
-                  businesses globally through an integrated digital platform.
+                  {t("about.Our_Vission_des")}
                 </p>
               </div>
             </div>
@@ -86,13 +81,10 @@ export default function Mession() {
             <div className="w-full h-[160px]  absolute buttom-0 left-0  ">
               <div className="mt-8 px-3 w-full  ">
                 <h5 className="font-[600] absolute top-0 left-20">
-                  Our Mission
+                  {t("about.Our_Mission")}
                 </h5>
                 <p className="text-xs absolute top-15 text-gray-500">
-                  We seek to create a dynamic trading environment that enables
-                  suppliers to showcase their products and services, and
-                  merchants to explore global markets through a seamless and
-                  secure interface.
+                  {t("about.Our_Vission_des")}
                 </p>
               </div>
             </div>
@@ -107,39 +99,39 @@ export default function Mession() {
             <p className="text-xl font-bold">
               680 <sup className="font-normal">+</sup>{" "}
             </p>
-            <p className="text-xs">Business Trust Us</p>
+            <p className="text-xs">{t("about.Business_Trust_Us")}</p>
           </div>
           <div className="h-1/4 flex flex-col items-center justify-center relative">
             <p className="text-xl text-xl font-bold">
               1,354 <sup className="font-normal">+</sup>{" "}
             </p>
-            <p className="text-xs">Sold Projects</p>
+            <p className="text-xs">{t("about.Sold_Projects")}</p>
           </div>
           <div className="h-1/4 flex flex-col items-center justify-center relative">
             <p className="text-xl font-bold">
               97% <sup className="font-normal">+</sup>{" "}
             </p>
-            <p className="text-xs">Success Rate</p>
+            <p className="text-xs">{t("about.Success_Rate")}</p>
           </div>
           <div className="h-1/4 flex flex-col items-center justify-center relative">
             <p className="text-xl font-bold">
               15Y <sup className="font-normal">+</sup>{" "}
             </p>
-            <p className="text-xs">Years of Experience</p>
+            <p className="text-xs">{t("about.Years_of_Experience")}</p>
           </div>
         </div>
       </div>
       {/* ---------------------- */}
       {/* title for large screen */}
-      <div className="absolute hidden lg:block top-3 left-2 md:left-16">
-        <p className="border-l-[3px] border-red-700 px-2 mt-4 font-bold text-gray-500 lg:text-white">
-          OUR MISSION & VISION
+      <div className="absolute hidden lg:block top-3 ltr:left-2 rtl:right-2 md:left-16">
+        <p className="ltr:border-l-[3px] rtl:border-r-[3px] border-red-700 px-2 mt-4 font-bold text-gray-500 lg:text-white">
+          {t("about.OUR_MISSION_VISION")}
         </p>
         <p
           className="font-bold text-3xl mt-3 leading-relaxed lg:text-white "
           style={{ fontFamily: "var(--font-Timmana)" }}
         >
-          Discover the core principles that cuids us
+          {t("about.Discover")}{" "}
         </p>
       </div>
     </div>

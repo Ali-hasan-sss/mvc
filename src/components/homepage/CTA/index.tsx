@@ -1,10 +1,13 @@
+import { useTranslation } from "react-i18next";
+
 export default function CTA() {
+  const { t } = useTranslation();
   return (
     <div className="py-10 px-2 md:px-20">
       <div className="cta py-5 px-6 flex flex-col md:flex-row gap-4 items-center justify-between">
         <p className="font-bold text-[18px] text-white">
-          🎯 Are you a supplier or merchant?
-          <br /> Join us today and start growing your business globally!
+          🎯 {t("home.Cta_q")}
+          <br /> {t("home.Cta_join")}
         </p>
         <button
           type="button"

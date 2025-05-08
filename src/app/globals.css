@@ -24,12 +24,19 @@
     --font-inria: "Inria Sans", sans-serif;
   }
 }
+html[lang="ar"] {
+  font-family: "Cairo", sans-serif;
+}
 
-body,
+html[lang="en"] {
+  font-family: var(--font-inter);
+}
+
+/* body,
 input,
 button {
   font-family: var(--font-inter);
-}
+} */
 .primary-color {
   color: #bf1e2e;
 }

@@ -1,18 +1,22 @@
+"use client";
+
 import { Facebook, LocationEdit, Phone } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
   const menuItems = [
-    { label: "Cup Cake", link: "#" },
+    { label: "Cup_Cake", link: "#" },
     { label: "Sandwich", link: "#" },
     { label: "Cookies", link: "#" },
     { label: "Bread", link: "#" },
     { label: "Biscuites", link: "#" },
-    { label: "Stoberry Cake", link: "#" },
+    { label: "Stoberry_Cake", link: "#" },
   ];
   const servicesItems = [
-    { label: "Home Delivery", link: "#" },
-    { label: "Office Delivery", link: "#" },
+    { label: "Home_Delivery", link: "#" },
+    { label: "Office_Delivery", link: "#" },
     { label: "Event", link: "#" },
     { label: "Birthday", link: "#" },
     { label: "Resturent", link: "#" },
@@ -41,31 +45,35 @@ export default function Footer() {
       </div>
       <div className="flex items-crnter justify-between w-full md:w-3/4">
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-bold text-white">Menu</h3>
+          <h3 className="text-xl font-bold text-white">{t("footer.Menu")}</h3>
           <ul className="text-gray-300 text-sm md:text-lg">
             {menuItems.map((item, index) => (
               <li className="py-1" key={index}>
                 <Link className="hover:text-red-700" href={item.link}>
-                  {item.label}
+                  {t(`footer.${item.label}`)}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-bold text-white">Services</h3>
+          <h3 className="text-xl font-bold text-white">
+            {t("navbar.Services")}
+          </h3>
           <ul className="text-gray-300 text-sm md:text-lg">
             {servicesItems.map((item, index) => (
               <li className="py-1" key={index}>
                 <Link className="hover:text-red-700" href={item.link}>
-                  {item.label}
+                  {t(`footer.${item.label}`)}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-bold text-white">Contact</h3>
+          <h3 className="text-xl font-bold text-white">
+            {t("footer.Contact")}
+          </h3>
           <ul className="text-gray-300 text-sm md:text-lg">
             {contactItems.map((item, index) => (
               <li className="py-3" key={index}>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import StarRatingInput from "../inputs/rating";
+import { useTranslation } from "react-i18next";
 
 interface reviewForm {
   rate: number | null;
@@ -16,6 +17,7 @@ interface reviewErrors {
 }
 
 export default function ReviewForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<reviewForm>({
     rate: 0,
     name: "",
@@ -34,18 +36,18 @@ export default function ReviewForm() {
     const newErrors: reviewErrors = {};
 
     if (!formData.rate || formData.rate < 1) {
-      newErrors.rate = "Please select a rating.";
+      newErrors.rate = "errors.rating";
     }
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required.";
+      newErrors.name = "errors.Name";
     }
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required.";
+      newErrors.email = "errors.Email2";
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = "Please enter a valid email address.";
+      newErrors.email = "errors.Email2";
     }
     if (!formData.review.trim()) {
-      newErrors.review = "Review is required.";
+      newErrors.review = "errors.Review";
     }
 
     setErrors(newErrors);
@@ -69,7 +71,7 @@ export default function ReviewForm() {
       className="flex flex-col w-full gap-6 px-2 md:px-10 lg:px-20 max-w-[700px] py-5"
     >
       <h2 className="text-xl md:text-3xl text-center font-bold text-gray-800">
-        Add a Review
+        {t("suppliers.Add_Review")}
       </h2>
 
       <div className="flex flex-col gap-1">
@@ -82,7 +84,7 @@ export default function ReviewForm() {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-gray-900">Name</label>
+        <label className="text-sm text-gray-900">{t("Name")}</label>
         <input
           type="text"
           placeholder="John Doe"
@@ -91,12 +93,12 @@ export default function ReviewForm() {
           className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         />
         {errors.name && (
-          <span className="text-red-500 text-sm">{errors.name}</span>
+          <span className="text-red-500 text-sm">{t(errors.name)}</span>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-gray-900">Email</label>
+        <label className="text-sm text-gray-900">{t("Email")}</label>
         <input
           type="email"
           placeholder="email@Example.com"
@@ -105,12 +107,14 @@ export default function ReviewForm() {
           className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         />
         {errors.email && (
-          <span className="text-red-500 text-sm">{errors.email}</span>
+          <span className="text-red-500 text-sm">{t(errors.email)}</span>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
-        <label className="text-sm text-gray-900">Write Your Review</label>
+        <label className="text-sm text-gray-900">
+          {t("suppliers.Write_Your_Review")}
+        </label>
         <textarea
           rows={4}
           placeholder="Write your feedback here"
@@ -119,7 +123,7 @@ export default function ReviewForm() {
           className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         />
         {errors.review && (
-          <span className="text-red-500 text-sm">{errors.review}</span>
+          <span className="text-red-500 text-sm">{t(errors.review)}</span>
         )}
       </div>
 
@@ -127,7 +131,7 @@ export default function ReviewForm() {
         type="submit"
         className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-md transition"
       >
-        Submit
+        {t("Submit")}
       </button>
     </form>
   );

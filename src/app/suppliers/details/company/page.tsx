@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/NavBar/Footer";
 import NavBar from "@/components/NavBar/navBar";
 
 export default function ProductsPage() {
@@ -11,6 +12,7 @@ export default function ProductsPage() {
         company
         {/* <h1 className="text-red-700">{id}</h1> */}
       </div>
+      <Footer />
     </>
   );
 }
