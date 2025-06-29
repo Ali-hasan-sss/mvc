@@ -36,3 +36,11 @@ export interface supplier {
   }[];
 }
 export type Language = "en" | "ar";
+export type LocalizedString = { ar: string; en: string };
+
+export type Sector = {
+  id: number;
+  title: LocalizedString;
+  description: LocalizedString;
+  image: string;
+};

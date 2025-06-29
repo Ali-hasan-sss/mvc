@@ -10,7 +10,7 @@ import Footer from "@/components/NavBar/Footer";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <NavBar />
       <Hero />
       <WellCome />

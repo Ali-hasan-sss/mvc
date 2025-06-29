@@ -1,52 +1,86 @@
 "use client";
 import { useState, useEffect } from "react";
-import { supplier } from "../../../types";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
+import Modal from "../common/modal";
+import { VisitorSupplier } from "@/store/visitorSuppliers";
+import useVisitorSuppliersStore from "@/store/visitorSuppliers";
+import useVisitorSectorsStore from "@/store/visitorSectors";
+import useVisitorProductsStore from "@/store/visitorProducts";
 
 interface SearchSuppliersProps {
-  suppliers: supplier[];
+  suppliers: VisitorSupplier[];
+  loading: boolean;
 }
 
-export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
+export default function SearchSuppliers({
+  suppliers,
+  loading,
+}: SearchSuppliersProps) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
-    country: "",
-    sector: "",
-    productType: "",
+    sector_id: "",
+    product_id: "",
   });
 
-  const [results, setResults] = useState<supplier[]>([]);
+  const [results, setResults] = useState<VisitorSupplier[]>([]);
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
-  const handleSubmit = (e: React.FormEvent) => {
+  const { fetchSupplierById, fetchSuppliers } = useVisitorSuppliersStore();
+  const { sectors, fetchSectors } = useVisitorSectorsStore();
+  const { products, fetchProducts } = useVisitorProductsStore();
+
+  // جلب القطاعات عند تحميل المكون
+  useEffect(() => {
+    fetchSectors({ page_size: 100 });
+  }, [fetchSectors]);
+
+  // جلب المنتجات عند تغيير القطاع
+  useEffect(() => {
+    if (formData.sector_id) {
+      fetchProducts({
+        sector_id: parseInt(formData.sector_id),
+        page_size: 100,
+      });
+    } else {
+      fetchProducts({ page_size: 100 });
+    }
+  }, [formData.sector_id, fetchProducts]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!suppliers || suppliers.length === 0) {
-      console.error("No suppliers data available.");
-      return;
+    const filters: {
+      sector_id?: number;
+      product_id?: number;
+    } = {};
+
+    if (formData.sector_id) {
+      filters.sector_id = parseInt(formData.sector_id);
     }
 
-    const filtered = suppliers.filter((s) => {
-      return (
-        s.contact?.country
-          .toLowerCase()
-          .includes(formData.country.toLowerCase()) &&
-        s.description.toLowerCase().includes(formData.sector.toLowerCase()) &&
-        s.products_tipe?.some((product) =>
-          product.product
-            .toLowerCase()
-            .includes(formData.productType.toLowerCase())
-        )
-      );
-    });
-    setResults(filtered);
-    setShowModal(true);
+    if (formData.product_id) {
+      filters.product_id = parseInt(formData.product_id);
+    }
+
+    try {
+      await fetchSuppliers(filters);
+      setResults(suppliers);
+      setShowModal(true);
+    } catch (error) {
+      console.error("Error fetching suppliers:", error);
+    }
   };
-  const gotoSupplire = (suplier: supplier) => {
-    localStorage.setItem("suplier", JSON.stringify(suplier));
-    router.push("/suppliers/details");
+
+  const gotoSupplire = async (supplier: VisitorSupplier) => {
+    try {
+      await fetchSupplierById(supplier.id);
+      router.push("/suppliers/details");
+    } catch (error) {
+      console.error("Error fetching supplier details:", error);
+    }
   };
+
   useEffect(() => {
     if (showModal && results.length > 0) {
       const timeout = setTimeout(() => {
@@ -74,42 +108,70 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
           </p>
         </div>
 
-        {["country", "sector", "productType"].map((field, i) => (
-          <div key={i} className="form-group flex flex-col">
-            <label className="text-sm text-[rgba(0,109,119,1)] capitalize">
-              {t(`suppliers.${field}`)}
-            </label>
-            <input
-              type="text"
-              placeholder={t("suppliers.Type")}
-              value={formData[field as keyof typeof formData]}
-              onChange={(e) =>
-                setFormData({ ...formData, [field]: e.target.value })
-              }
-              className="p-1 w-full rounded-lg border-[2px] outline-none border-[rgba(0,109,119,1)]"
-            />
-          </div>
-        ))}
+        {/* Sector Selection */}
+        <div className="form-group flex flex-col">
+          <label className="text-sm text-[rgba(0,109,119,1)] capitalize">
+            {t("suppliers.sector")}
+          </label>
+          <select
+            value={formData.sector_id}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                sector_id: e.target.value,
+                product_id: "",
+              })
+            }
+            className="p-1 w-full rounded-lg border-[2px] outline-none border-[rgba(0,109,119,1)]"
+          >
+            <option value="">{t("suppliers.Select_Sector")}</option>
+            {sectors.map((sector) => (
+              <option key={sector.id} value={sector.id}>
+                {sector.title}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Product Type Selection */}
+        <div className="form-group flex flex-col">
+          <label className="text-sm text-[rgba(0,109,119,1)] capitalize">
+            {t("suppliers.productType")}
+          </label>
+          <select
+            value={formData.product_id}
+            onChange={(e) =>
+              setFormData({ ...formData, product_id: e.target.value })
+            }
+            className="p-1 w-full rounded-lg border-[2px] outline-none border-[rgba(0,109,119,1)]"
+          >
+            <option value="">{t("suppliers.Select_Product_Type")}</option>
+            {products.map((product) => (
+              <option key={product.id} value={product.id}>
+                {product.title}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <div className="form-group flex items-center mt-5 justify-center w-full">
           <button
             type="submit"
-            className="py-2 px-3 search_btn w-full rounded-full cursor-pointer text-gray-100 hover:text-gray-900 font-bold bg-[rgba(0,109,119,1)]"
+            disabled={loading}
+            className="py-2 px-3 search_btn w-full rounded-full cursor-pointer text-gray-100 hover:text-gray-900 font-bold bg-[rgba(0,109,119,1)] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {t("Search_Now")}
+            {loading ? t("Loading...") : t("Search_Now")}
           </button>
         </div>
       </form>
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl shadow-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-bold mb-4 text-[rgba(0,109,119,1)]">
-              {"suppliers.search_result"}
-            </h3>
-
-            {results.length > 0 ? (
+        <Modal
+          onClose={() => setShowModal(false)}
+          title={t("suppliers.search_result")}
+          content={
+            results.length > 0 ? (
               <ul className="space-y-4 max-h-[300px] overflow-auto">
                 {results.map((supplier) => (
                   <li
@@ -119,15 +181,15 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
                   >
                     <img
                       src={supplier.image}
-                      alt={supplier.name}
+                      alt={`${supplier.first_name} ${supplier.last_name}`}
                       className="w-12 h-12 rounded-full object-cover"
                     />
                     <div>
                       <p className="font-semibold text-[rgba(0,109,119,1)]">
-                        {supplier.name}
+                        {`${supplier.first_name} ${supplier.last_name}`}
                       </p>
                       <p className="text-sm text-gray-600">
-                        {supplier.contact?.country}
+                        {supplier.address}
                       </p>
                     </div>
                   </li>
@@ -135,16 +197,9 @@ export default function SearchSuppliers({ suppliers }: SearchSuppliersProps) {
               </ul>
             ) : (
               <p className="text-gray-500">{t("suppliers.no_seach_results")}</p>
-            )}
-
-            <button
-              onClick={() => setShowModal(false)}
-              className="mt-4 bg-[rgba(0,109,119,1)] text-white px-4 py-2 rounded-full w-full"
-            >
-              {t("close")}
-            </button>
-          </div>
-        </div>
+            )
+          }
+        />
       )}
     </>
   );

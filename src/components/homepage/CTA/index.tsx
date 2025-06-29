@@ -13,7 +13,7 @@ export default function CTA() {
           type="button"
           className="bg-white hover:bg-gray-300 py-2 px-4 rounded-xl md:w-1/4 cursor-pointer"
         >
-          Contact us{" "}
+          {t("Contact_us")}
         </button>
       </div>
     </div>

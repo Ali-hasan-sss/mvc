@@ -2,22 +2,55 @@
 import NavBar from "@/components/NavBar/navBar";
 import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
-import { formatNumber } from "../../../../utils/helperFunctions";
+import { formatNumber } from "../../../utils/helperFunctions";
 import SupplierDiscription from "@/components/SupplierPage/details/supplierDesc";
 import Reviews from "@/components/SupplierPage/details/reviews";
 import { supplier } from "../../../../types";
+import useVisitorSuppliersStore from "@/store/visitorSuppliers";
 
 export default function SupplierDetails() {
   const [activeTab, setActiveTab] = useState("desc");
   const [supplier, setSupplier] = useState<supplier | null>(null);
+  const { selectedSupplier, loading } = useVisitorSuppliersStore();
 
   useEffect(() => {
-    const stored = localStorage.getItem("suplier");
-    if (stored) {
-      setSupplier(JSON.parse(stored));
+    // إذا كانت البيانات موجودة في store، استخدمها
+    if (selectedSupplier) {
+      // تحويل البيانات من VisitorSupplierDetail إلى supplier format
+      const supplierData: supplier = {
+        id: selectedSupplier.id,
+        name: `${selectedSupplier.first_name} ${selectedSupplier.last_name}`,
+        description: selectedSupplier.description,
+        image: selectedSupplier.image,
+        Clients: 0, // يمكن إضافته لاحقاً إذا كان متوفراً في API
+        contact: {
+          country: "",
+          city: "",
+          Facebook: "",
+          Email: selectedSupplier.email,
+        },
+        reviews: {
+          average_reviews: 0,
+          total_reviews: 0,
+          customers_comments: [],
+        },
+        companies:
+          selectedSupplier.companies?.map((company) => ({
+            id: company.id,
+            companyName: company.title,
+          })) || [],
+      };
+      setSupplier(supplierData);
+    } else {
+      // إذا لم تكن البيانات موجودة في store، جرب localStorage كاحتياطي
+      const stored = localStorage.getItem("suplier");
+      if (stored) {
+        setSupplier(JSON.parse(stored));
+      }
     }
-  }, []);
-  if (!supplier) {
+  }, [selectedSupplier]);
+
+  if (loading) {
     return (
       <>
         <NavBar />
@@ -25,6 +58,18 @@ export default function SupplierDetails() {
       </>
     );
   }
+
+  if (!supplier) {
+    return (
+      <>
+        <NavBar />
+        <div className="p-10 text-center text-gray-600">
+          No supplier data available
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <NavBar />

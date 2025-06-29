@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
 
 interface Comppany {
   id: number;
@@ -9,6 +10,7 @@ interface CompanyCardProps {
 }
 export default function CompanyCard({ company }: CompanyCardProps) {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const viewCompany = (id: number) => {
     localStorage.setItem("selectCompany", String(id));
@@ -22,7 +24,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
         className="w-[100px] cursor-pointer text-xs font-bold p-2 bg-gray-50 rounded-full"
         onClick={() => viewCompany(company.id)}
       >
-        See Products
+        {t("admin.products")}
       </button>
     </div>
   );

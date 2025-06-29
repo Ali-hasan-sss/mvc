@@ -1,10 +1,17 @@
 import { Star } from "lucide-react";
+import { useEffect } from "react";
 import SearchSupliers from "../forms/suppliersSearch";
-import { suppliers } from "./data";
 import { useTranslation } from "react-i18next";
+import useVisitorSuppliersStore from "@/store/visitorSuppliers";
 
 export default function FindSuppliers() {
   const { t } = useTranslation();
+  const { suppliers, loading, fetchSuppliers } = useVisitorSuppliersStore();
+
+  useEffect(() => {
+    fetchSuppliers();
+  }, [fetchSuppliers]);
+
   return (
     <div
       style={{ direction: "ltr" }}
@@ -62,7 +69,7 @@ export default function FindSuppliers() {
         />
       </div>
       {/*------ end images container -------*/}
-      <SearchSupliers suppliers={suppliers} />
+      <SearchSupliers suppliers={suppliers} loading={loading} />
     </div>
   );
 }

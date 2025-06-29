@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import { reviw, supplier } from "../../../../types";
-import { formatNumber } from "../../../../utils/helperFunctions";
+import { formatNumber } from "../../../utils/helperFunctions";
 import "swiper/css";
 import CustomCarousel from "@/components/slider/ImageCarousel";
 import ReviewCard from "@/components/cards/reviewsCard";

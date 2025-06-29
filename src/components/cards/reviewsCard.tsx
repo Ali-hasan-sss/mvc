@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface ReviewCardProps {
   review: {
     id: number;
@@ -7,6 +9,8 @@ interface ReviewCardProps {
   };
 }
 export default function ReviewCard({ review }: ReviewCardProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col gap-2 w-[250px] rounded-lg py-4 px-2 h-[200px] bg-white">
       <div className="flex items-center gap-3">
@@ -18,7 +22,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
         <h2 className="text-xl font-bold">{review.name}</h2>
       </div>
       <p className="text-sm text-gray-400 overflow-y-auto h-[200px]">
-        {review.comment || "no comment"}
+        {review.comment || t("admin.no_data")}
       </p>
     </div>
   );

@@ -37,6 +37,12 @@ input,
 button {
   font-family: var(--font-inter);
 } */
+
+html,
+body {
+  overflow-x: hidden;
+}
+
 .primary-color {
   color: #bf1e2e;
 }

@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useEffect, useState, useRef } from "react";
-import { updateScales } from "../../../utils/helperFunctions";
+import { updateScales } from "../../utils/helperFunctions";
 import SwiperCore from "swiper";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 

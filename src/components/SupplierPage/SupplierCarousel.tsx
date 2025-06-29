@@ -1,13 +1,22 @@
 "use client";
 import { Bookmark, ChevronLeft, ChevronRight, Heart, Send } from "lucide-react";
 import { useEffect, useState } from "react";
-import { suppliers } from "./data";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
+import useVisitorSuppliersStore from "@/store/visitorSuppliers";
 
 export default function SupplierCarousel() {
   const { t } = useTranslation();
+  const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(7);
+
+  const { suppliers, loading, fetchSuppliers, fetchSupplierById } =
+    useVisitorSuppliersStore();
+
+  useEffect(() => {
+    fetchSuppliers();
+  }, [fetchSuppliers]);
 
   useEffect(() => {
     const updateVisibleCount = () => {
@@ -28,18 +37,53 @@ export default function SupplierCarousel() {
   }, []);
 
   const handleNext = () => {
-    setCurrent((prev) => (prev + 1) % suppliers.length);
+    if (suppliers.length > 0) {
+      setCurrent((prev) => (prev + 1) % suppliers.length);
+    }
   };
 
   const handlePrev = () => {
-    setCurrent((prev) => (prev - 1 + suppliers.length) % suppliers.length);
+    if (suppliers.length > 0) {
+      setCurrent((prev) => (prev - 1 + suppliers.length) % suppliers.length);
+    }
+  };
+
+  const handleSendClick = async () => {
+    if (suppliers[current]?.id) {
+      try {
+        await fetchSupplierById(suppliers[current].id);
+        router.push("/suppliers/details");
+      } catch (error) {
+        console.error("Error fetching supplier details:", error);
+      }
+    }
   };
 
   const half = Math.floor(visibleCount / 2);
   const displayedSuppliers = Array.from({ length: visibleCount }, (_, i) => {
     const index = (current - half + i + suppliers.length) % suppliers.length;
-    return suppliers[index];
+    return {
+      ...suppliers[index],
+      displayIndex: i,
+      id: suppliers[index]?.id || `placeholder-${i}`,
+    };
   });
+
+  if (loading) {
+    return (
+      <div className="w-full bg-[rgba(0,109,119,0.11)] mt-20 flex flex-col gap-5 items-center text-center">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  if (suppliers.length === 0) {
+    return (
+      <div className="w-full bg-[rgba(0,109,119,0.11)] mt-20 flex flex-col gap-5 items-center text-center">
+        <div className="text-xl">No suppliers available</div>
+      </div>
+    );
+  }
 
   return (
     <div className=" w-full bg-[rgba(0,109,119,0.11)] mt-20 flex flex-col gap-5 items-center text-center">
@@ -94,9 +138,9 @@ export default function SupplierCarousel() {
 
           return (
             <img
-              key={supplier.id}
-              src={supplier.image}
-              alt={supplier.name}
+              key={`${supplier.id}-${supplier.displayIndex}`}
+              src={supplier.image || undefined}
+              alt={supplier.first_name || ""}
               style={{
                 position: "absolute",
                 top: `${top}px`,
@@ -123,13 +167,15 @@ export default function SupplierCarousel() {
       <div className=" relative w-[90%] mt-10 flex items-center justify-center md:w-[700px]">
         <div className="bg-white w-[85%] md:w-[650px] h-[230px] rounded-xl  p-5 shadow-md">
           <h3 className="text-2xl font-bold text-yellow-600">
-            {suppliers[current].name}
+            {suppliers[current]
+              ? `${suppliers[current].first_name} ${suppliers[current].last_name}`
+              : ""}
           </h3>
           <p className="text-gray-500 text-sm mb-3">
-            {suppliers[current].contact.country}
+            {suppliers[current]?.address || ""}
           </p>
           <p className="text-gray-700 px-5 text-sm mt-10 h-[100px] overflow-y-auto">
-            {suppliers[current].description}
+            {suppliers[current]?.description || ""}
           </p>
         </div>
         <button
@@ -151,7 +197,10 @@ export default function SupplierCarousel() {
         <button className="text-red-500 p-3 rounded-full bg-white hover:bg-gray-50 text-xl cursor-pointer ">
           <Heart className="fill-red-500" />
         </button>
-        <button className="text-cyan-500 p-3 rounded-full bg-white hover:bg-gray-50 text-xl cursor-pointer">
+        <button
+          onClick={handleSendClick}
+          className="text-cyan-500 p-3 rounded-full bg-white hover:bg-gray-50 text-xl cursor-pointer"
+        >
           <Send className="fill-blue-500" />
         </button>
         <button className="text-yellow-500 p-3 rounded-full bg-white hover:bg-gray-50 text-xl cursor-pointer">

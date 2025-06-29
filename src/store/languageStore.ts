@@ -11,7 +11,6 @@ type LanguageStore = {
 };
 
 export const useLanguageStore = create<LanguageStore>((set) => {
-  // احصل على اللغة فقط إذا كنت في المتصفح
   const defaultLang =
     typeof window !== "undefined"
       ? (localStorage.getItem("i18nextLng") as Language) || "en"
